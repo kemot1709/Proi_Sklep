@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1527709394 source:c:\users\tomek\desktop\proi3\sklep\main.cpp
+	<iostream>
+	"Pracownik.h"
+	"Kasa.h"
+	"Klient.h"
+	"Sklep.h"
+	"towar.h"
+
+1527858906 c:\users\tomek\desktop\proi3\sklep\pracownik.h
+
+1527856606 c:\users\tomek\desktop\proi3\sklep\kasa.h
+
+1527856781 c:\users\tomek\desktop\proi3\sklep\klient.h
+
+1527856862 c:\users\tomek\desktop\proi3\sklep\sklep.h
+	<iostream>
+	<array>
+	<queue>
+	<vector>
+	"Kasa.h"
+	"Pracownik.h"
+	"Towar.h"
+	"Klient.h"
+
+1527856607 c:\users\tomek\desktop\proi3\sklep\towar.h
+
+1527790855 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
+	"Kasa.h"
+
+1527806717 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
+	"Klient.h"
+
+1527806648 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
+	"Pracownik.h"
+
+1527805937 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
+	"Sklep.h"
+
+1527856855 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
+	"Sklep.h"
+
+1527856340 source:c:\users\tomek\desktop\proi3\sklep\towar.cpp
+	"towar.h"
+
