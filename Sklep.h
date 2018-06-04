@@ -47,6 +47,10 @@ public:
     virtual Kasa sklep_kasa(int); // zwraca konkretna kase
     virtual Szkic_towar sklep_towar(int); // zwraca podany towar
 
+    virtual void sklep_akt_pracownik(int,Pracownik);
+    virtual void sklep_akt_klient(int,Klient);
+    virtual void sklep_akt_kasa(int,Kasa);
+
     virtual void sklep_wszedl_klient(); // dodanie nowego klienta do sklepu
     virtual void sklep_nowy_dzien(); // zresetowanie stanu sklepu do dnia nastepnego
     virtual double sklep_f_utarg(); // zwraca utarg sklepu, bez VAT

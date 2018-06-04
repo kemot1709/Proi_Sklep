@@ -22,7 +22,7 @@ class Towar_5 : public Szkic_towar {
 
 public:
     Towar_5(int); // konstruktor kasy
-    //~Towar(); //#include <iostream> destruktor kasy
+    //~Towar(); //destruktor kasy
 };
 class Towar_8 : public Szkic_towar {
 public:
@@ -34,7 +34,7 @@ public:
     Towar_23(int); // konstruktor kasy
     //~Towar(); // destruktor kasy
 
-    };
+};
 class Towar_51 : public Szkic_towar {
 public:
     Towar_51(int); // konstruktor kasy

@@ -13,8 +13,10 @@ void jadymy_z_szalotem() {
     n = 4, m = 9, o = 1000;
     Sklep supermarket(n, m, o);
     for(int i = 1;; i++) { // licznik dni
+        std::cout << "Dzien " << i << "\n\n";
         supermarket.sklep_nowy_dzien();
         for(int j = 1; j <= 120; j++) { // jeden tick - 6 min
+            std::cout << "Tick " << j << "\n\n";
             int czas_komend = 0;
             // wejscie klientow
             if(j < 111) {
@@ -23,8 +25,9 @@ void jadymy_z_szalotem() {
                 for(int k = 0; k < r; k++) { // rezerwacja miejsca dla kientow
                     supermarket.sklep_wszedl_klient();
                 }
-                if (r>0){
-                    std:: cout<< "Do sklepu wchodzi "<<r<<" klientow"<<std::endl;
+                if(r > 0) {
+                    std:: cout << "Do sklepu wchodzi " << r << " klientow" << std::endl;
+                    Sleep(100);
                 }
             }
             // ogarniecie zajec pracownikom
@@ -35,8 +38,11 @@ void jadymy_z_szalotem() {
                         prac.pracownik_zmien_stan(3, -1);
                     }
                     else {
-                        if(prac.pracownik_f_zajecie() == en_p_kasa) { // wylaczanie kasy
-                            supermarket.sklep_kasa(prac.pracownik_f_kasa()).kasa_zmien_stan();
+                        if(prac.pracownik_f_zajecie() == en_p_kasa) { // wylaczanie kasy jesli byl na kasie
+                            Kasa kasa = supermarket.sklep_kasa(prac.pracownik_f_kasa());
+                            kasa.kasa_zmien_stan();
+                            kasa.kasa_f_zmien_sprzedawce(k);
+                            supermarket.sklep_akt_kasa(prac.pracownik_f_kasa(), kasa);
                         }
                         std::uniform_int_distribution <int> uniform_dist(0, 99);
                         int losuj_zajecie = uniform_dist(e1);
@@ -45,6 +51,7 @@ void jadymy_z_szalotem() {
                             for(int l = 0; l < n; l++) { // szukanie wolnej kasy
                                 if(supermarket.sklep_kasa(l).kasa_f_stan() == false) {
                                     wolna_kasa = l;
+                                    break;
                                 }
                             }
                             if(wolna_kasa == -1) {
@@ -54,8 +61,10 @@ void jadymy_z_szalotem() {
                             prac.pracownik_zmien_stan(3, 20);
                             prac.pracownik_zmien_zajecie(en_p_kasa);
                             prac.pracownik_zmien_kasa(wolna_kasa);
-                            supermarket.sklep_kasa(wolna_kasa).kasa_zmien_stan();
-                            supermarket.sklep_kasa(wolna_kasa).kasa_f_zmien_sprzedawce(k);
+                            Kasa kasa = supermarket.sklep_kasa(wolna_kasa);
+                            kasa.kasa_zmien_stan();
+                            kasa.kasa_f_zmien_sprzedawce(k);
+                            supermarket.sklep_akt_kasa(wolna_kasa, kasa);
                             std::cout << "Pracownik " << k + 1 << " idzie na kase nr " << wolna_kasa + 1 << std::endl;
                         }
                         else if(losuj_zajecie < 40) { // pracownik idzie wyk³adaæ towar
@@ -81,6 +90,7 @@ void jadymy_z_szalotem() {
                         czas_komend++;
                     }
                 }
+                supermarket.sklep_akt_pracownik(k, prac);
             }
             // ogarniecie zajec klientow
             int p = supermarket.sklep_f_ilosc_klientow();
@@ -91,25 +101,26 @@ void jadymy_z_szalotem() {
                     int losuj_zajecie = uniform_dist(e1);
                     if(losuj_zajecie < 15 && klie.klient_ilosc_zakupow() > 0) { // idzie do kasy
                         klie.klient_zmiana_zajecia(en_k_przy_kasie);
-                        int kol_kasa = -1, kol_ile;
+                        int kol_kasa = -1;
+                        int kol_ile;
                         for(int l = 0; l < n; l++) { // szukanie najlepszej kasy
                             if(supermarket.sklep_kasa(l).kasa_f_stan() == true) {
                                 if(kol_kasa == -1) {
                                     kol_kasa = l;
                                     kol_ile = supermarket.sklep_kasa(l).kasa_ilosc_osob();
-                                    continue;
                                 }
                                 else {
                                     if(kol_ile > supermarket.sklep_kasa(l).kasa_ilosc_osob()) {
                                         kol_kasa = l;
                                         kol_ile = supermarket.sklep_kasa(l).kasa_ilosc_osob();
-                                        continue;
                                     }
                                 }
                             }
-                            supermarket.sklep_kasa(kol_kasa).kasa_dodaj_osobe(k);
                         }
-                        std::cout << "Klient " << k + 1 << " idzie do kasy nr " << kol_kasa << std::endl;
+                        Kasa kasa = supermarket.sklep_kasa(kol_kasa);
+                        kasa.kasa_dodaj_osobe(k);
+                        supermarket.sklep_akt_kasa(kol_kasa, kasa);
+                        std::cout << "Klient " << k + 1 << " podchodzi do kolejki do kasy nr " << kol_kasa + 1 << std::endl;
                     }
                     else if(losuj_zajecie < 20) { // chodzi po sklepie
                         klie.klient_zmiana_zajecia(en_k_cos_robi);
@@ -130,6 +141,9 @@ void jadymy_z_szalotem() {
                     }
                     else if(losuj_zajecie < 35) { // sprawdza cene
                         klie.klient_zmiana_zajecia(en_k_sprawdza_cene);
+                        std::uniform_int_distribution <int> uniform_dist(0, o - 1);
+                        int wybrany_tow = uniform_dist(e1);
+                        std::cout << "Klient " << k + 1 << " sprawdza cene towaru nr " << wybrany_tow << ", wynosi ona " << supermarket.sklep_towar(wybrany_tow).towar_f_cena_brutto() << std::endl;
                     }
                     else { // wybiera towar do koszyka
                         klie.klient_zmiana_zajecia(en_k_wybiera_towar);
@@ -140,6 +154,7 @@ void jadymy_z_szalotem() {
                     }
                     czas_komend++;
                 }
+                supermarket.sklep_akt_klient(k, klie);
             }
             //obsluga kas
             for(int k = 0; k < n; k++) {
@@ -150,6 +165,7 @@ void jadymy_z_szalotem() {
                         czas_komend++;
                     }
                 }
+                supermarket.sklep_akt_kasa(k, kasa);
             }
             Sleep(100 * czas_komend + 1000); // czas oczekiwania - przerwa na czytanie zdarzen
         }

@@ -2,6 +2,8 @@
 
 Klient::Klient(int n) {
     klient_ID = n;
+    klient_zajecie = en_k_cos_robi;
+    klient_zakupy.clear();
 }
 
 int Klient::klient_f_ID(){

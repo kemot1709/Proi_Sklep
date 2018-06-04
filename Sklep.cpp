@@ -4,7 +4,8 @@ Sklep::Sklep(int n, int m, int o) {
     int towar_ilosc = o;
     sklep_ilosc_kas = n;
     sklep_ilosc_pracownikow = m;
-    sklep_stan = false;
+    sklep_stan = true;
+    sklep_utarg = 0;
     sklep_klienci.clear();
     sklep_kasy.reserve(n);
     for(int i = 1; i <= n; i++) { // rezerwacja miejsca na kasy
@@ -15,7 +16,7 @@ Sklep::Sklep(int n, int m, int o) {
         sklep_pracownicy.push_back(Pracownik(i));
     }
     sklep_towary.reserve(towar_ilosc);
-    int o1=o/3,o2=o/8,o3=o/5,o4=o-o1-o2-o3;
+    int o1 = o / 3, o2 = o / 8, o3 = o / 5, o4 = o - o1 - o2 - o3;
     int i = 0;
     for(; i < o1; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_8(i));
@@ -29,7 +30,6 @@ Sklep::Sklep(int n, int m, int o) {
     for(; i < o4; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_23(i));
     }
-
 }
 
 int Sklep::sklep_f_ilosc_kas() {
@@ -56,7 +56,7 @@ void Sklep::sklep_wszedl_klient() {
 void Sklep::sklep_nowy_dzien() {
     sklep_klienci.clear(); // resetowanie stanu klientow
     sklep_ilosc_klientow = 0;
-    for(int i = 1; i <= sklep_ilosc_pracownikow; i++) { // resetowawnie stanu pracownikow
+    for(int i = 0; i < sklep_ilosc_pracownikow; i++) { // resetowawnie stanu pracownikow
         sklep_pracownicy[i].pracownik_nowy_dzien();
     }
 }
@@ -69,12 +69,24 @@ Klient Sklep::sklep_klient(int n) {
     return sklep_klienci[n];
 }
 
-Kasa  Sklep::sklep_kasa(int n){
+Kasa  Sklep::sklep_kasa(int n) {
     return sklep_kasy[n];
 }
 
-Szkic_towar Sklep::sklep_towar(int n){
+Szkic_towar Sklep::sklep_towar(int n) {
     return sklep_towary[n];
+}
+
+void Sklep::sklep_akt_pracownik(int i, Pracownik x){
+    sklep_pracownicy[i]=x;
+}
+
+void Sklep::sklep_akt_klient(int i, Klient x){
+    sklep_klienci [i]=x;
+}
+
+void Sklep::sklep_akt_kasa(int i, Kasa x){
+    sklep_kasy[i]=x;
 }
 
 double Sklep::sklep_f_utarg() {
@@ -82,6 +94,6 @@ double Sklep::sklep_f_utarg() {
     for(int i = 0; i < sklep_f_ilosc_kas(); i++) {
         ut += sklep_kasy[i].kasa_f_utarg_netto();
     }
-    sklep_utarg+=ut;
+    sklep_utarg += ut;
     return ut;
 }

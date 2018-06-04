@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1527709394 source:c:\users\tomek\desktop\proi3\sklep\main.cpp
+1528146775 source:c:\users\tomek\desktop\proi3\sklep\main.cpp
 	<iostream>
 	"Pracownik.h"
 	"Kasa.h"
@@ -19,7 +19,7 @@
 	<iostream>
 	"towar.h"
 
-1528146345 c:\users\tomek\desktop\proi3\sklep\sklep.h
+1528149197 c:\users\tomek\desktop\proi3\sklep\sklep.h
 	<iostream>
 	<array>
 	<queue>
@@ -32,23 +32,23 @@
 1528134896 c:\users\tomek\desktop\proi3\sklep\towar.h
 	<iostream>
 
-1528143897 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
+1528155308 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
 	<iostream>
 	<queue>
 	"Kasa.h"
 	"Klient.h"
 	"Sklep.h"
 
-1528135061 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
+1528147189 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
 	"Klient.h"
 
-1528144319 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
+1528148358 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
 	"Pracownik.h"
 
-1528145991 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
+1528149196 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
 	"Sklep.h"
 
-1528144477 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
+1528154920 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
 	<ctime>
 	<chrono>
 	"windows.h"

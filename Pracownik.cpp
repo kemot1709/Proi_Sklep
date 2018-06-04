@@ -35,7 +35,7 @@ void Pracownik::pracownik_nowy_dzien() {
 }
 
 void Pracownik::pracownik_zmien_stan(int i, int n) {
-    pracownik_stan[i] += n;
+    pracownik_stan[i] =pracownik_stan[i]+n;
 }
 
 int Pracownik::pracownik_f_kasa() {
