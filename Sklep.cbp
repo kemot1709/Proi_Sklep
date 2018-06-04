@@ -41,6 +41,7 @@
 		<Unit filename="Sklep.cpp" />
 		<Unit filename="Sklep.h" />
 		<Unit filename="Start.cpp" />
+		<Unit filename="Towar.cpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="towar.h" />
 		<Extensions>

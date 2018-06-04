@@ -7,13 +7,19 @@
 	"Sklep.h"
 	"towar.h"
 
-1527858906 c:\users\tomek\desktop\proi3\sklep\pracownik.h
+1528144245 c:\users\tomek\desktop\proi3\sklep\pracownik.h
 
-1527856606 c:\users\tomek\desktop\proi3\sklep\kasa.h
+1528144449 c:\users\tomek\desktop\proi3\sklep\kasa.h
+	<queue>
+	<cstdlib>
+	"Klient.h"
 
-1527856781 c:\users\tomek\desktop\proi3\sklep\klient.h
+1528146181 c:\users\tomek\desktop\proi3\sklep\klient.h
+	<vector>
+	<iostream>
+	"towar.h"
 
-1527856862 c:\users\tomek\desktop\proi3\sklep\sklep.h
+1528146345 c:\users\tomek\desktop\proi3\sklep\sklep.h
 	<iostream>
 	<array>
 	<queue>
@@ -23,23 +29,34 @@
 	"Towar.h"
 	"Klient.h"
 
-1527856607 c:\users\tomek\desktop\proi3\sklep\towar.h
+1528134896 c:\users\tomek\desktop\proi3\sklep\towar.h
+	<iostream>
 
-1527790855 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
+1528143897 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
+	<iostream>
+	<queue>
 	"Kasa.h"
+	"Klient.h"
+	"Sklep.h"
 
-1527806717 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
+1528135061 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
 	"Klient.h"
 
-1527806648 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
+1528144319 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
 	"Pracownik.h"
 
-1527805937 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
+1528145991 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
 	"Sklep.h"
 
-1527856855 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
+1528144477 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
+	<ctime>
+	<chrono>
+	"windows.h"
+	"random"
 	"Sklep.h"
 
-1527856340 source:c:\users\tomek\desktop\proi3\sklep\towar.cpp
+1528142112 source:c:\users\tomek\desktop\proi3\sklep\towar.cpp
+	<ctime>
+	"random"
 	"towar.h"
 

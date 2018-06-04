@@ -15,13 +15,17 @@ public:
 class Pracownik {
     int pracownik_ID;
     p_zajecie pracownik_zajecie;
-    int pracownik_stan [3]; // stan pracy pracownika: system zmianowy, czas na kasie, czas na przerwie
+    int pracownik_stan [4]; // stan pracy pracownika: system zmianowy, czas na kasie, czas na przerwie, ile jeszcze jest zajety
+    int pracownik_kasa;
 public:
     Pracownik(int); // konstruktor
     //~Pracownik(); // destruktor
     virtual int pracownik_f_ID(); // zwraca nr pracownika
     virtual int pracownik_f_zajecie(); // zwraca co robi pracownik
-    // zwracanie stanu pracownika
+    virtual int pracownik_f_stan(int); // zwracanie stanu pracownika w konkretnej kwestii
+    virtual int pracownik_f_kasa();
+    virtual void pracownik_zmien_kasa(int);
+    virtual void pracownik_zmien_stan(int,int); // zmiana konkretnego parametru o tyle (suma)
     virtual void pracownik_zmien_zajecie(p_zajecie); // zmienia zajecie pracownika
     virtual void pracownik_nowy_dzien(); // resetuje stan pracownika na nasteny dzien
 };
