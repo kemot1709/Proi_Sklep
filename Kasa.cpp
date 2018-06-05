@@ -33,12 +33,12 @@ bool Kasa::kasa_f_stan() {
     return kasa_stan;
 }
 
-void Kasa::kasa_zmien_stan(){
-    if( kasa_stan==true){
-         kasa_stan=false;
-         return;
+void Kasa::kasa_zmien_stan() {
+    if(kasa_stan == true) {
+        kasa_stan = false;
+        return;
     }
-    kasa_stan=true;
+    kasa_stan = true;
 }
 
 int Kasa::kasa_pierwszy() {
@@ -49,13 +49,13 @@ void Kasa::kasa_dodaj_osobe(int n) {
     kasa_kolejka.push(n);
 }
 
-void Kasa::kasa_usun_osobe(Klient kl) {
+double Kasa::kasa_usun_osobe(Klient kl) {
     if(kasa_postoj == true) {
         kasa_postoj = false;
-        return;
+        return -1;
     }
     int n = kasa_kolejka.front();
-    if(n +1!= kl.klient_f_ID()) {
+    if(n + 1 != kl.klient_f_ID()) {
         std::cout << "ERROR usuwanie os - niewlasciwy ID" << std::endl;
     }
     int kon = kl.klient_ilosc_zakupow();
@@ -67,12 +67,12 @@ void Kasa::kasa_usun_osobe(Klient kl) {
         netto += tow.towar_f_cena();
     }
     kasa_kolejka.pop();
-    std::cout <<"Klient "<< n+1<< " wyszedl i zaplacil "<< brutto<<std::endl;
     k_zajecie i = en_k_wyszedl;
     kl.klient_zmiana_zajecia(i);
     kasa_na_rachunku_kasy += brutto;
     kasa_na_rachunku_netto += netto;
     kasa_postoj = true;
+    return brutto;
 }
 
 int Kasa::kasa_ilosc_osob() {
@@ -81,4 +81,10 @@ int Kasa::kasa_ilosc_osob() {
 
 double Kasa::kasa_f_utarg_netto() {
     return kasa_na_rachunku_netto;
+}
+void Kasa::kasa_reset() {
+    while(kasa_ilosc_osob() > 0) {
+        kasa_kolejka.pop();
+    }
+    kasa_stan = false;
 }

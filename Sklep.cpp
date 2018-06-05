@@ -4,6 +4,7 @@ Sklep::Sklep(int n, int m, int o) {
     int towar_ilosc = o;
     sklep_ilosc_kas = n;
     sklep_ilosc_pracownikow = m;
+    sklep_ilosc_klientow = 0;
     sklep_stan = true;
     sklep_utarg = 0;
     sklep_klienci.clear();
@@ -21,13 +22,13 @@ Sklep::Sklep(int n, int m, int o) {
     for(; i < o1; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_8(i));
     }
-    for(; i < o2; i++) { // rezerwacja miejsca na towary
+    for(; i < o1 + o2; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_51(i));
     }
-    for(; i < o3; i++) { // rezerwacja miejsca na towary
+    for(; i < o2 + o1 + o3; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_5(i));
     }
-    for(; i < o4; i++) { // rezerwacja miejsca na towary
+    for(; i < o; i++) { // rezerwacja miejsca na towary
         sklep_towary.push_back(Towar_23(i));
     }
 }
@@ -57,7 +58,15 @@ void Sklep::sklep_nowy_dzien() {
     sklep_klienci.clear(); // resetowanie stanu klientow
     sklep_ilosc_klientow = 0;
     for(int i = 0; i < sklep_ilosc_pracownikow; i++) { // resetowawnie stanu pracownikow
-        sklep_pracownicy[i].pracownik_nowy_dzien();
+        Pracownik prac = sklep_pracownik(i);
+        prac.pracownik_nowy_dzien();
+        sklep_akt_pracownik(i, prac);
+    }
+    for(int i = 0; i < sklep_ilosc_kas; i++) {
+        Kasa kasa = sklep_kasa(i);
+        kasa.kasa_reset();
+        kasa.kasa_f_zmien_sprzedawce(0);
+        sklep_akt_kasa(i, kasa);
     }
 }
 
@@ -77,16 +86,16 @@ Szkic_towar Sklep::sklep_towar(int n) {
     return sklep_towary[n];
 }
 
-void Sklep::sklep_akt_pracownik(int i, Pracownik x){
-    sklep_pracownicy[i]=x;
+void Sklep::sklep_akt_pracownik(int i, Pracownik x) {
+    sklep_pracownicy[i] = x;
 }
 
-void Sklep::sklep_akt_klient(int i, Klient x){
-    sklep_klienci [i]=x;
+void Sklep::sklep_akt_klient(int i, Klient x) {
+    sklep_klienci [i] = x;
 }
 
-void Sklep::sklep_akt_kasa(int i, Kasa x){
-    sklep_kasy[i]=x;
+void Sklep::sklep_akt_kasa(int i, Kasa x) {
+    sklep_kasy[i] = x;
 }
 
 double Sklep::sklep_f_utarg() {

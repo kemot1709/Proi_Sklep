@@ -5,7 +5,7 @@
 
 //using namespace std;
 
-double losuj_cene();
+double losuj_cene(int);
 
 class Szkic_towar {
 protected:
@@ -19,7 +19,6 @@ public:
 };
 
 class Towar_5 : public Szkic_towar {
-
 public:
     Towar_5(int); // konstruktor kasy
     //~Towar(); //destruktor kasy

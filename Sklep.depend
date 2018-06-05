@@ -1,38 +1,40 @@
 # depslib dependency file v1.0
-1528146775 source:c:\users\tomek\desktop\proi3\sklep\main.cpp
+1528205553 source:c:\users\tomek\desktop\proi3\sklep\main.cpp
 	<iostream>
+	<fstream>
 	"Pracownik.h"
 	"Kasa.h"
 	"Klient.h"
 	"Sklep.h"
 	"towar.h"
 
-1528144245 c:\users\tomek\desktop\proi3\sklep\pracownik.h
+1528187233 c:\users\tomek\desktop\proi3\sklep\pracownik.h
 
-1528144449 c:\users\tomek\desktop\proi3\sklep\kasa.h
+1528206322 c:\users\tomek\desktop\proi3\sklep\kasa.h
 	<queue>
 	<cstdlib>
 	"Klient.h"
 
-1528146181 c:\users\tomek\desktop\proi3\sklep\klient.h
+1528198849 c:\users\tomek\desktop\proi3\sklep\klient.h
 	<vector>
 	<iostream>
 	"towar.h"
 
-1528149197 c:\users\tomek\desktop\proi3\sklep\sklep.h
+1528203073 c:\users\tomek\desktop\proi3\sklep\sklep.h
 	<iostream>
 	<array>
 	<queue>
 	<vector>
+	<fstream>
 	"Kasa.h"
 	"Pracownik.h"
-	"Towar.h"
+	"towar.h"
 	"Klient.h"
 
-1528134896 c:\users\tomek\desktop\proi3\sklep\towar.h
+1528205160 c:\users\tomek\desktop\proi3\sklep\towar.h
 	<iostream>
 
-1528155308 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
+1528207257 source:c:\users\tomek\desktop\proi3\sklep\kasa.cpp
 	<iostream>
 	<queue>
 	"Kasa.h"
@@ -42,20 +44,22 @@
 1528147189 source:c:\users\tomek\desktop\proi3\sklep\klient.cpp
 	"Klient.h"
 
-1528148358 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
+1528193993 source:c:\users\tomek\desktop\proi3\sklep\pracownik.cpp
 	"Pracownik.h"
 
-1528149196 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
+1528207257 source:c:\users\tomek\desktop\proi3\sklep\sklep.cpp
 	"Sklep.h"
 
-1528154920 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
+1528208017 source:c:\users\tomek\desktop\proi3\sklep\start.cpp
 	<ctime>
 	<chrono>
+	<iomanip>
+	<fstream>
 	"windows.h"
 	"random"
 	"Sklep.h"
 
-1528142112 source:c:\users\tomek\desktop\proi3\sklep\towar.cpp
+1528205624 source:c:\users\tomek\desktop\proi3\sklep\towar.cpp
 	<ctime>
 	"random"
 	"towar.h"
